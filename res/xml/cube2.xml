@@ -20,5 +20,8 @@
 <!-- The attributes in this XML file provide configuration information -->
 
 <wallpaper xmlns:android="http://schemas.android.com/apk/res/android"
-        android:settingsActivity="com.cheesemp.livewalls.liveshapes.CubeWallpaper2Settings"
+	android:thumbnail="@drawable/ic_launcher_wallpaper"
+    android:description="@string/wallpaper_cube2"
+    android:settingsActivity="com.cheesemp.livewalls.liveshapes.CubeWallpaper2Settings"
 />
+
