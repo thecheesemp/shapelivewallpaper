@@ -73,6 +73,13 @@ public class CubeWallpaper2 extends WallpaperService
 			SharedPreferences.OnSharedPreferenceChangeListener
 	{
 
+
+		private final int maxSize=140;
+		private final int increment=10;
+		private float touchX;
+		private float touchY;
+		private int size = maxSize;
+		
 		private final Handler mHandler = new Handler();
 
 		ThreeDPoint[] mOriginalPoints;
@@ -335,22 +342,28 @@ public class CubeWallpaper2 extends WallpaperService
 				c.drawLine(start.x, start.y, end.x, end.y, mPaint);
 			}
 		}
-
+		
 		void drawTouchPoint(Canvas c)
 		{
-			RectF rect = new RectF();
-			rect.top = mTouchY - 80;
-			rect.bottom = mTouchY + 80;
-			rect.left = mTouchX - 80;
-			rect.right = mTouchX + 80;
-			if (mTouchX >= 0 && mTouchY >= 0)
+			if(mTouchX >= 0 && mTouchY >=0)
 			{
-				mPaint.setColor(0xffff0000);
-				c.drawCircle(mTouchX, mTouchY, 80, mPaint);
-				mPaint.setColor(0xff00ff00);
-				c.drawRect(rect, mPaint);
-				mPaint.setColor(0xffffffff);
+				touchX = mTouchX;
+				touchY = mTouchY;
+				size=0;
 			}
+			else
+			{
+				if(size<maxSize)
+				{
+					int colorDiv = 255-((255/maxSize)*size);
+					mPaint.setStrokeWidth(2);
+					mPaint.setARGB(255, colorDiv, colorDiv, colorDiv);
+					size += increment;
+					c.drawCircle(touchX, touchY, size, mPaint);
+					mPaint.setStrokeWidth(1);
+					mPaint.setARGB(255, 255, 255, 255);
+				}
+			}	
 		}
 	}
 }
