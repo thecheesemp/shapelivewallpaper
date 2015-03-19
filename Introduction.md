@@ -1,0 +1,8 @@
+# Introduction #
+
+A brief introduction to the project
+
+
+# Details #
+
+This project is currently just for my own personal learning and is NOT in a suitable condition to use. If you want an example Android live wallpaper app check out the example that comes with the SDK as it will be better written. Feel free to take a look and comment though!
